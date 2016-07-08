@@ -16,7 +16,7 @@ npm i fis-parser-rollup --save-dev
 ## Usage
 
 ```javascript
-//
+// fis-conf.js
 fis.match('/path/to/entry.js', {
   parser: fis.plugin('rollup', options),
 });
