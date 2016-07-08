@@ -1,0 +1,35 @@
+{
+  "name": "fis-parser-rollup",
+  "version": "0.0.0",
+  "description": "A rollup parser for fis",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csbun/fis-parser-rollup.git"
+  },
+  "keywords": [
+    "fis3",
+    "parser",
+    "rollup"
+  ],
+  "author": "Hans Chan <icsbun@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/csbun/fis-parser-rollup/issues"
+  },
+  "homepage": "https://github.com/csbun/fis-parser-rollup#readme",
+  "devDependencies": {
+    "eslint": "^3.0.1",
+    "eslint-config-airbnb-base": "^4.0.0",
+    "eslint-plugin-import": "^1.10.2"
+  },
+  "dependencies": {
+    "bower": "^1.7.9",
+    "deasync": "^0.1.7",
+    "rollup": "^0.33.0",
+    "rollup-plugin-bower-resolve": "^0.1.1",
+    "rollup-plugin-commonjs": "^3.1.0",
+    "rollup-plugin-node-resolve": "^1.7.1",
+    "rollup-plugin-uglify": "^1.0.1"
+  }
+}
