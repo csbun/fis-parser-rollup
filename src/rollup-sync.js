@@ -6,7 +6,6 @@ const rollup = require('rollup');
 const rollupPluginNodeResolve = require('rollup-plugin-node-resolve');
 const rollupPluginBowerResolve = require('rollup-plugin-bower-resolve');
 const rollupPluginCommonjs = require('rollup-plugin-commonjs');
-const rollupPluginUglify = require('rollup-plugin-uglify');
 const rollupPluginFisUri = require('./plugin-fis-uri');
 
 module.exports = function rollupFile(file, config) {
@@ -36,10 +35,10 @@ module.exports = function rollupFile(file, config) {
     }),
     // TODO: // 支持 require(tpl/html)
   ];
-  if (!isDebug) {
-    plugins.push(rollupPluginUglify());
+  // enable custom plugins
+  if (config.plugins) {
+    plugins.push.apply(plugins, config.plugins);
   }
-  // TODO: enable custom plugins
 
   // 运行 bundle
   rollup.rollup({
@@ -54,7 +53,7 @@ module.exports = function rollupFile(file, config) {
       format: 'iife',
       moduleName: 'omelette',
       sourceMap: isDebug,
-      banner: `/* ${entry} | ${new Date()} */`,
+      banner: `/* ${new Date()} */`,
     });
     // DEBUG 模式则添加 sourceMap
     content = bundleResult.code || '';
@@ -64,8 +63,7 @@ module.exports = function rollupFile(file, config) {
     isDone = true;
   })
   .catch(err => {
-    // fis.log.info(`[preprocessor-rollup]: ${entry}`);
-    // fis.log.error(err);
+    fis.log.warn(`[parser-rollup]: bundle fail: ${entry}`);
     content = isDebug ? `console.log(${JSON.stringify(err)});` : '/* error */';
     isDone = true;
   });

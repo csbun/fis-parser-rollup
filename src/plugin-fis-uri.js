@@ -37,7 +37,8 @@ module.exports = function fisUriPlugin(options) {
 
   // plugin ouput
   return {
-    transform: function transform(code, id) {
+    name: 'fis-uri',
+    transform(code, id) {
       try {
         const stats = fs.statSync(id);
         if (stats.isFile()) {

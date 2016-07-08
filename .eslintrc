@@ -1,6 +1,9 @@
 {
   "extends": "airbnb-base",
   "parserOptions": {
-    "sourceType": "script",
+    "sourceType": "script"
   },
+  "globals": {
+    "fis": true
+  }
 }
