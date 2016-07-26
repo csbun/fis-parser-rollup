@@ -63,7 +63,7 @@ module.exports = function rollupFile(file, config) {
     isDone = true;
   })
   .catch(err => {
-    fis.log.warn(`[parser-rollup]: bundle fail: ${entry}`);
+    fis.log.warn(`[parser-rollup]: bundle fail: <${entry}> ${err.message || ''}`);
     content = isDebug ? `console.log(${JSON.stringify(err)});` : '/* error */';
     isDone = true;
   });
